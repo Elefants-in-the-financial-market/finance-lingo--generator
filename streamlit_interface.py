@@ -10,6 +10,7 @@ print("Loading tokenizer")
 tokenizer = AutoTokenizer.from_pretrained(model_saving_dir_path)  
 print("Tokenizer and model loaded")
 
+@st.cache()
 def run_text_completion(input_txt, model, tokenizer):
 	input_ids = tokenizer.encode(input_txt, return_tensors='pt')
 
