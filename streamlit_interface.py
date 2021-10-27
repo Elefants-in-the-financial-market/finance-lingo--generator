@@ -16,21 +16,33 @@ def run_text_completion(input_txt, model, tokenizer):
 
 	
 	# Beam-sampling
-	beam_outputs = model.generate(
-	    input_ids, 
-	    max_length=200, 
-	    num_beams=1, #3
-	    no_repeat_ngram_size=2, 
-	    num_return_sequences=1, #3 
-	    early_stopping=True
-	)
+	#beam_outputs = model.generate(
+	#    input_ids, 
+	#    max_length=200, 
+	#    num_beams=1, #3
+	#    no_repeat_ngram_size=2, 
+	#    num_return_sequences=1, #3 
+	#    early_stopping=True
+	#)
 
 	# now we have 3 output sequences
-	return tokenizer.decode(beam_outputs[0], skip_special_tokens=True).lower()
+	#return tokenizer.decode(beam_outputs[0], skip_special_tokens=True).lower()
 	#for i, beam_output in enumerate(beam_outputs):
 	#  print("{}: {}".format(i, tokenizer.decode(beam_output, skip_special_tokens=True)))
 
 	# tokenizer.decode(beam_outputs[0], skip_special_tokens=True)
+
+	#	# Top p sampling
+	sample_output = model.generate(
+	    input_ids, 
+	    do_sample=True, 
+	    max_length=200, 
+	    top_p=0.92, 
+	    top_k=0
+	)
+
+
+	return tokenizer.decode(sample_output[0], skip_special_tokens=True)
 
 
 #st.title('Finance-GPT2')
@@ -46,14 +58,4 @@ if st.button('Run'):
 
 	
 
-#	# Top p sampling
-#	sample_output = model.generate(
-#	    input_ids, 
-#	    do_sample=True, 
-#	    max_length=200, 
-#	    top_p=0.92, 
-#	    top_k=0
-#	)
-#
-#
-#	return tokenizer.decode(sample_output[0], skip_special_tokens=True)
+
