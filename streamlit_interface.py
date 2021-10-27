@@ -5,9 +5,9 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
 model_saving_dir_path = "jakobwes/my-awesome-model"
 
 print("Loading model")
-model = AutoModelForCausalLM.from_pretrained(model_saving_dir_path, use_auth_token=True)
+model = AutoModelForCausalLM.from_pretrained(model_saving_dir_path)
 print("Loading tokenizer")
-tokenizer = AutoTokenizer.from_pretrained(model_saving_dir_path, use_auth_token=True)  
+tokenizer = AutoTokenizer.from_pretrained(model_saving_dir_path)  
 print("Tokenizer and model loaded")
 
 def run_text_completion(input_txt, model, tokenizer):
