@@ -6,9 +6,9 @@ from transformers import AutoTokenizer, AutoModelWithLMHead
 
   
 
-tokenizer = AutoTokenizer.from_pretrained("finance-gpt2")
+tokenizer = AutoTokenizer.from_pretrained("jakobwes/finance-gpt2")
 
-model = AutoModelWithLMHead.from_pretrained("finance-gpt2")
+model = AutoModelWithLMHead.from_pretrained("jakobwes/finance-gpt2")
 
 def infer(input_ids, max_length, temperature, top_k, top_p, num_return_sequences):
 
