@@ -3,7 +3,7 @@ import requests
 import time
 
 API_URL = "https://api-inference.huggingface.co/models/jakobwes/finance-gpt2"
-headers = {"Authorization": "Bearer api_CIRGlyQhCuBOhpPcyiUQwtDgAoGvXjlLwp"}
+headers = {"Authorization": st.secrets["Authorization"]}
 
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
@@ -50,7 +50,7 @@ if st.button('Run'):
 			my_bar = st.progress(0)
 			for pct_complete in range(100):
 				time.sleep(query_response["estimated_time"]/100)
-				my_bar.progress(percent_complete + 1)
+				my_bar.progress(pct_complete + 1)
 	else:
 		st.write(query_response["generated_text"])
 
