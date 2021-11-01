@@ -3,7 +3,7 @@ import requests
 import time
 
 API_URL = "https://api-inference.huggingface.co/models/jakobwes/finance-gpt2"
-headers = {"Authorization": "Bearer api_CIRGlyQhCuBOhpPcyiUQwtDgAoGvXjlLwp"}
+headers = {"Authorization": st.secrets["Autorization"]}
 
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
